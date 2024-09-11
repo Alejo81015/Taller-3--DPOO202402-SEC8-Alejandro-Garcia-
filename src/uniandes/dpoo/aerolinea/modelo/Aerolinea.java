@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -164,14 +165,15 @@ public class Aerolinea
     public Vuelo getVuelo( String codigoRuta, String fechaVuelo )
     {
     	int contador =0;
+    	Vuelo vuelo=null;
     	boolean encontro=false;
     	while (contador<vuelos.size() && encontro==false) {
-    		if (vuelos.get(contador).getFecha()==fechaVuelo && vuelos) {
-    			
+    		if (vuelos.get(contador).getFecha()==fechaVuelo && vuelos.get(contador).getRuta().getCodigoRuta()==codigoRuta) {
+    			vuelo=vuelos.get(contador);
+    			encontro=true;
     		}
     	}
-        // TODO implementar
-        return null;
+        return vuelo;
     }
 
     /**
@@ -189,8 +191,11 @@ public class Aerolinea
      */
     public Collection<Tiquete> getTiquetes( )
     {
-        // TODO implementar
-        return null;
+    	Collection<Tiquete> Tiquetes = new HashSet<Tiquete>();
+    	for (int i =0; i<vuelos.size();i++) {
+    		Tiquetes.add((Tiquete) vuelos.get(i).getTiquetes());
+    	}
+        return Tiquetes;
 
     }
 

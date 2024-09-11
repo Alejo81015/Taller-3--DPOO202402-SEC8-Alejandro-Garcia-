@@ -40,6 +40,7 @@ public class GeneradorTiquetes
 
         return new Tiquete( codigo, tarifa, cliente, vuelo );
     }
+    
 
     /**
      * Registra que un cierto tiquete ya fue vendido, para que el generador de tiquetes no vaya a generar otro tiquete con el mismo código
